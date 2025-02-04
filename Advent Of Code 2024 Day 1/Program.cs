@@ -1,5 +1,6 @@
 ﻿using MyTools;
 
+// Part 1 complete!
 public class Program
 {
     static void Main()
