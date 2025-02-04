@@ -1,11 +1,10 @@
 ﻿using MyTools;
 
-// Part 1 complete!
 public class Program
 {
     static void Main()
     {
-        string filePath = "C:\\Users\\kirah.cox\\source\\repos\\Advent Of Code 2024 Day 1\\Advent Of Code 2024 Day 1\\input.txt";
+        string filePath = "C:\\Users\\kirah.cox\\source\\repos\\kirah-cox\\Advent-Of-Code-2024-Day-1\\Advent Of Code 2024 Day 1\\input.txt";
         List<string> inputList = File.ReadAllLines(filePath).ToList();
 
         List<string[]> newInputList = new List<string[]>();
@@ -34,19 +33,49 @@ public class Program
             parsedSecondColumn.Add(int.Parse(column));
         }
 
-        parsedFirstColumn.Sort();
-        parsedSecondColumn.Sort();
 
-        List<int> addColumns = new List<int>();
-        int lineNumber = 0;
-        foreach (int column in parsedFirstColumn)
+        // This code was a part of part 1
+
+        //parsedFirstColumn.Sort();
+        //parsedSecondColumn.Sort();
+
+        //List<int> addColumns = new List<int>();
+        //int lineNumber = 0;
+        //foreach (int column in parsedFirstColumn)
+        //{
+        //    addColumns.Add(Tools.FindDifferenceInColumns(parsedFirstColumn[lineNumber], parsedSecondColumn[lineNumber]));
+        //    lineNumber++;
+        //}
+
+        //int result = addColumns.Sum();
+        //Console.WriteLine(result);
+
+
+
+        // This section was added for part 2
+        List<int> similarityList = new List<int>();
+        foreach (int line in parsedFirstColumn)
         {
-            addColumns.Add(Tools.FindDifferenceInColumns(parsedFirstColumn[lineNumber], parsedSecondColumn[lineNumber]));
-            lineNumber++;
+            if (parsedSecondColumn.Contains(line))
+            {
+                int count = 0;
+                foreach (int row in parsedSecondColumn)
+                {
+                    if(row == line)
+                    {
+                        count++;
+                    }
+                }
+
+                for (int i = 0; i < count; i++)
+                {
+                    similarityList.Add(line);
+                }
+            }
         }
 
-        int result = addColumns.Sum();
-        Console.WriteLine(result);
+        int result = similarityList.Sum();
+        Tools.GoodbyeMessage(result);
     }
 }
 

@@ -12,5 +12,10 @@ namespace MyTools
         {
             return Math.Abs(parsedFirstColumn - parsedSecondColumn);
         }
+
+        public static void GoodbyeMessage(int result)
+        {
+            Console.WriteLine($"The answer is {result}, nice job!");
+        }
     }
 }
